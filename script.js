@@ -19,6 +19,24 @@ document.getElementById("equals").addEventListener("click", calculate);
 document.getElementById("clear").addEventListener("click", clearCalculator);
 document.getElementById("delete").addEventListener("click", deleteLast);
 
+document.addEventListener("keydown", (event) => {
+  if (/^[0-9.]$/.test(event.key)) {
+    appendNumber(event.key);
+  } else if (["+", "-", "*", "/"].includes(event.key)) {
+    appendOperator(event.key);
+  } else if (event.key === "Enter" || event.key === "=") {
+    calculate();
+  } else if (event.key === "Escape") {
+    clearCalculator();
+  } else if (event.key === "Backspace" || event.key === "Delete") {
+    deleteLast();
+  } else {
+    return;
+  }
+
+  event.preventDefault();
+});
+
 function appendNumber(value) {
   if (hasCalculated) {
     currentInput = "";
