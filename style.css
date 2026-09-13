@@ -1,0 +1,170 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+:root {
+    --bg-color: #d9e4e8;
+    --number: #f6f1e8;
+    --number-active:#a5a3a0;
+    --function: #2a9d8f;
+    --input-text:rgb(26, 24, 24);
+    --output-text:rgb(124, 116, 116);
+    --border:rgb(0, 0, 0);
+}
+body {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--bg-color);
+    color:black;
+}
+
+header {
+    font-family: 'Courier New', Courier, monospace;
+    font-variant:small-caps;
+    font-size: large;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    border: solid 2px var(--border);
+    padding: 10px;
+    height: 300px;
+    width: 300px;
+
+}
+.display {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    align-items: center;
+    height: 80px;
+    width: 100%;
+    border-bottom: solid 2px var(--border);
+    margin-bottom: 15px;
+}
+
+.input-value,
+.output {
+    width: 100%;
+    padding: 4px 8px;
+    text-align: right;
+}
+
+.input-value {
+    color: var(--input-text);
+}
+
+.output {
+    color: var(--output-text);
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto repeat(3, 1fr);
+    grid-template-areas:
+        "top top top right"
+        "numbers numbers numbers right"
+        "numbers numbers numbers right"
+        " numbers numbers numbers right";
+}
+
+.buttons {
+    display: contents;
+}
+
+.function.top {
+    grid-row: 1;
+}
+
+.function.top:nth-child(1) {
+    grid-column: 1;
+}
+
+.function.top:nth-child(2) {
+    grid-column: 2;
+}
+
+.function.top:nth-child(3) {
+    grid-column: 3;
+}
+
+.function.top:nth-child(4) {
+    grid-column: 4;
+}
+
+.function.right {
+    grid-column: 4;
+}
+
+.function.right:nth-child(5) {
+    grid-row: 2;
+}
+
+.function.right:nth-child(6) {
+    grid-row: 3;
+}
+
+.function.right:nth-child(7) {
+    grid-row: 4;
+}
+
+.number-container {
+    grid-area: numbers;
+    display: grid ;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+.number {
+     background-color: var(--number);
+     border: solid 2px var(--border);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     cursor: pointer;
+     width: 100%;
+     height: 100%;
+     transition: all 0.2s ease-in-out;
+     -webkit-transition: all 0.2s ease-in-out;
+     -moz-transition: all 0.2s ease-in-out;
+     -ms-transition: all 0.2s ease-in-out;
+     -o-transition: all 0.2s ease-in-out;
+}
+.number:active {
+    background:var(--number-active);
+}
+.function {
+    background-color: var(--function);
+    border: solid 2px var(--border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+    min-height: 0;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+}
+.function:active{
+    background-color: #256c64;
+}
+.function.clear {
+    background-color: red ;
+}
+.function.clear:active{
+    background-color: rgb(67, 0, 0);
+}
